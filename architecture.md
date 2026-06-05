@@ -99,4 +99,4 @@ Counter `BCD_0to5` digunakan untuk puluhan detik dan puluhan menit. Counter ini 
 
 ## 8. Keterbatasan Arsitektur
 
-Sistem ini bukan real-time clock 24 jam karena digit jam dirancang sampai `99`. Sistem juga masih menggunakan ripple carry, sehingga pada simulasi cepat dapat muncul glitch singkat saat transisi berantai. Keterbatasan ini tidak mengganggu fungsi dasar stopwatch pada clock 1 Hz, tetapi tetap perlu disebutkan saat presentasi karena menjadi bagian dari evaluasi kritis.
+Sistem ini bukan real-time clock 24 jam karena digit jam dirancang sampai `99`. Sistem juga masih menggunakan ripple carry, sehingga pada simulasi cepat dapat muncul glitch singkat saat transisi berantai. Keterbatasan ini tidak mengganggu fungsi dasar stopwatch pada clock 1 KHz, tetapi tetap perlu disebutkan saat presentasi karena menjadi bagian dari evaluasi kritis.
