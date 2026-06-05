@@ -6,11 +6,11 @@
 
 ## Penyusun Proyek
 
-| Nama | NIM | Peran |
-|---|---|---|
-| Narendra Farel Arivanto | [25032014021] |  |
-| Nadhif Dafa Aditra | [25032014029] |  |
-| Fahmi Bima Yudhistira | [25032014011] |  |
+| Nama | NIM |
+|---|---|
+| Narendra Farel Arivanto | [25032014021] |
+| Nadhif Dafa Aditra | [25032014029] |
+| Fahmi Bima Yudhistira | [25032014011] |
 
 ## Deskripsi Singkat Proyek
 
