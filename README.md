@@ -8,9 +8,9 @@
 
 | Nama | NIM | Peran |
 |---|---|---|
-| Narendra Farel Arivanto | [25032014021] | Perancang counter dan carry chain |
-| Nadhif Dafa Aditra | [25032014029] | Perancang kontrol START/STOP/RESET |
-| Fahmi Bima Yudhistira | [25032014011] | Dokumentasi, pengujian, dan video demo |
+| Narendra Farel Arivanto | [25032014021] |  |
+| Nadhif Dafa Aditra | [25032014029] |  |
+| Fahmi Bima Yudhistira | [25032014011] |  |
 
 ## Deskripsi Singkat Proyek
 
