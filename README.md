@@ -35,8 +35,8 @@ Kontrol utama berada di top-level. Tombol `START` mengaktifkan flip-flop enable 
 stopwatch_uas/
 ├── README.md
 ├── src/
-│   ├── stopwatch.circ                 # file utama Logisim, wajib ditambahkan
-│   └── README_src.md                   # catatan isi folder src
+│   ├── stopwatch.circ                 
+│   └── README_src.md                   
 ├── docs/
 │   ├── laporan Project.docx
 │   ├── architecture.txt
