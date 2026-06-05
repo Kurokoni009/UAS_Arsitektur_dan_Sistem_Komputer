@@ -15,7 +15,7 @@ Kolom `Status` harus diisi setelah simulasi dijalankan. Jangan menulis `PASS` ji
 ## 2. Test Case Kontrol
 
 | Test ID | Kondisi Awal | Input | Expected Output | Status |
-|---|---|---|---|---|---|
+|---|---|---|---|---|
 | CTRL-01 | Power on | Tidak ada | `EN=0`, display `00:00:00` | PASS |
 | CTRL-02 | `EN=0`, `00:00:00` | Tekan `START` | `EN=0`, counter mulai berjalan | PASS |
 | CTRL-03 | Stopwatch berjalan | Tekan `STOP` | `EN=1`, display berhenti di nilai terakhir | PASS |
@@ -26,7 +26,7 @@ Kolom `Status` harus diisi setelah simulasi dijalankan. Jangan menulis `PASS` ji
 ## 3. Test Case Counter BCD
 
 | Test ID | Modul | Input Kondisi | Expected Q[3:0] | Expected Carry Status |
-|---|---|---|---|---|---|---|
+|---|---|---|---|---|
 | BCD9-01 | `BCD_0to9` | `CLR=1` | `0000` | 0 | PASS |
 | BCD9-02 | `BCD_0to9` | 1 counter clock, `EN=1` | `0001` | 0 | [isi] | PASS |
 | BCD9-03 | `BCD_0to9` | Nilai mencapai 9 | `1001` | 1 | PASS |
@@ -38,7 +38,7 @@ Kolom `Status` harus diisi setelah simulasi dijalankan. Jangan menulis `PASS` ji
 ## 4. Test Case Sistem Terintegrasi
 
 | Test ID | Kondisi Awal | Input | Expected Output | Status |
-|---|---|---|---|---|---|
+|---|---|---|---|---|
 | SYS-01 | `00:00:00`, `EN=0` | START | Display bertambah tiap clock | PASS |
 | SYS-02 | `00:00:07`, running | STOP | Display tetap `00:00:07` | PASS |
 | SYS-03 | `00:00:07`, stopped | START | Display lanjut ke `00:00:08` | PASS |
@@ -50,7 +50,7 @@ Kolom `Status` harus diisi setelah simulasi dijalankan. Jangan menulis `PASS` ji
 ## 5. Ringkasan Hasil
 
 | Kelompok Uji | Total Test | PASS | FAIL | Catatan |
-|---|---:|---:|---:|---|
+|---|---:|---:|----|
 | Kontrol START/STOP/RESET | 3 |  ✅ |    | Validasi `EN_FF` dan `CLR`. |
 | Counter BCD | 21 |  ✅  |    | Validasi `BCD_0to9` dan `BCD_0to5`. |
 | Sistem terintegrasi | 12 | ✅ |    | Validasi display dan carry chain. |
