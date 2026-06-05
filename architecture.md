@@ -46,7 +46,7 @@ Rubrik Digital Logic Design meminta penjelasan arsitektur sistem seperti control
 | Register/state memory | Flip-flop internal pada setiap counter dan `EN_FF` | Menyimpan nilai digit waktu dan status running/stopped. |
 | Arithmetic logic | Incrementer/counter internal pada `BCD_0to9` dan `BCD_0to5` | Melakukan operasi tambah satu pada setiap pulsa clock saat enable aktif. |
 | Memory | State counter `Q[3:0]` pada enam digit | Sistem menyimpan keadaan waktu, bukan memori program. |
-| I/O bus | `CLK_1Hz`, `EN`, `CLR`, `Q[3:0]`, `CARRY` | Mengalirkan sinyal antarblok dan dari counter ke display. |
+| I/O bus | `CLK_1KHz`, `EN`, `CLR`, `Q[3:0]`, `CARRY` | Mengalirkan sinyal antarblok dan dari counter ke display. |
 | Output interface | Enam display 7-segment BCD | Menampilkan nilai waktu kepada pengguna. |
 
 Dengan pemetaan ini, penjelasan arsitektur tetap mengikuti tuntutan penilaian, tetapi tidak memaksakan stopwatch sebagai komputer 8-bit lengkap.
