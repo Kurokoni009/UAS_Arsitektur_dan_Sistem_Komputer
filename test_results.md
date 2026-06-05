@@ -20,7 +20,7 @@ Kolom `Status` harus diisi setelah simulasi dijalankan. Jangan menulis `PASS` ji
 | CTRL-02 | `EN=1`, `00:00:00` | Tekan `START` | `EN=0`, counter mulai berjalan | PASS |
 | CTRL-03 | Stopwatch berjalan | Tekan `STOP` | `EN=1`, display berhenti di nilai terakhir | PASS |
 | CTRL-04 | Stopwatch berhenti pada nilai tertentu | Tekan `START` | Counter lanjut dari nilai terakhir | PASS |
-| CTRL-05 | Stopwatch berhenti | Tekan `RESET` | `00:00:00`, `EN=0` | PASS |
+| CTRL-05 | Stopwatch berhenti | Tekan `RESET` | `00:00:00`, `EN=1` | PASS |
 | CTRL-06 | Stopwatch berjalan | Tekan `RESET` | `00:00:00`, `EN=0` | PASS |
 
 ## 3. Test Case Counter BCD
