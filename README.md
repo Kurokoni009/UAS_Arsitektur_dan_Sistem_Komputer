@@ -62,7 +62,7 @@ stopwatch_uas/
 6. Tekan `START` untuk menjalankan stopwatch.
 7. Tekan `STOP` untuk menghentikan hitungan pada nilai terakhir.
 8. Tekan `START` kembali untuk melanjutkan hitungan.
-9. Tekan `RESET` untuk mengembalikan tampilan ke `00:00:00` dan membuat `EN=0`.
+9. Tekan `RESET` untuk mengembalikan tampilan ke `00:00:00` dan membuat `EN=1`.
 
 ## Output yang Diharapkan
 
