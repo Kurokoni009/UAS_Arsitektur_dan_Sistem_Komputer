@@ -54,11 +54,11 @@ stopwatch-digital-logisim/
 
 ## Cara Menjalankan Simulasi
 
-1. Unduh dan buka **Logisim Evolution** versi 3.8.0 atau versi yang kompatibel.
+1. Unduh dan buka **Logisim Evolution** versi 4.1.0 atau versi yang kompatibel.
 2. Buka file `src/stopwatch.circ` melalui menu `File → Open`.
-3. Pastikan top-level circuit menampilkan tombol `START`, `STOP`, `RESET`, input `CLK_1Hz`, enam counter BCD, dan enam display.
+3. Pastikan top-level circuit menampilkan tombol `START`, `STOP`, `RESET`, input `CLK_1KHz`, enam counter BCD, dan enam display.
 4. Aktifkan simulasi melalui `Simulate → Simulation Enabled`.
-5. Aktifkan clock melalui `Simulate → Ticks Enabled`.
+5. Aktifkan clock melalui `Simulate → Ticks Enabled` dan atur `Tick Frequency ke 1KHz`.
 6. Tekan `START` untuk menjalankan stopwatch.
 7. Tekan `STOP` untuk menghentikan hitungan pada nilai terakhir.
 8. Tekan `START` kembali untuk melanjutkan hitungan.
