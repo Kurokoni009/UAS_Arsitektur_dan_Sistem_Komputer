@@ -17,7 +17,7 @@ Kolom `Status` harus diisi setelah simulasi dijalankan. Jangan menulis `PASS` ji
 | Test ID | Kondisi Awal | Input | Expected Output | Status |
 |---|---|---|---|---|
 | CTRL-01 | Power on | Tidak ada | `EN=0`, display `00:00:00` | PASS |
-| CTRL-02 | `EN=0`, `00:00:00` | Tekan `START` | `EN=0`, counter mulai berjalan | PASS |
+| CTRL-02 | `EN=1`, `00:00:00` | Tekan `START` | `EN=0`, counter mulai berjalan | PASS |
 | CTRL-03 | Stopwatch berjalan | Tekan `STOP` | `EN=1`, display berhenti di nilai terakhir | PASS |
 | CTRL-04 | Stopwatch berhenti pada nilai tertentu | Tekan `START` | Counter lanjut dari nilai terakhir | PASS |
 | CTRL-05 | Stopwatch berhenti | Tekan `RESET` | `00:00:00`, `EN=0` | PASS |
