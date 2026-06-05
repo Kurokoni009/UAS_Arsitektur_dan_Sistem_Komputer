@@ -6,10 +6,10 @@ Dokumen ini menjelaskan input, output, dan sinyal internal pada stopwatch digita
 
 | Input | Lebar | Aktif | Fungsi | Perilaku yang Diharapkan |
 |---|---:|---|---|---|
-| `CLK_1Hz` | 1 bit | Rising edge | Clock utama sistem | Counter bertambah setiap pulsa saat `EN=1`. |
-| `START` | 1 bit | High / ditekan | Menjalankan stopwatch | `EN_FF.Q` menjadi 1. |
-| `STOP` | 1 bit | High / ditekan | Menghentikan stopwatch | `EN_FF.Q` menjadi 0. |
-| `RESET` | 1 bit | High / ditekan | Menghapus nilai waktu | Semua counter kembali ke 0 dan `EN=0`. |
+| `CLK_1KHz` | 1 bit | Rising edge | Clock utama sistem | Counter bertambah setiap saat `EN=0`. |
+| `START` | 1 bit | High / ditekan | Menjalankan stopwatch | `EN_FF.Q` menjadi 0. |
+| `STOP` | 1 bit | High / ditekan | Menghentikan stopwatch | `EN_FF.Q` menjadi 1. |
+| `RESET` | 1 bit | High / ditekan | Menghapus nilai waktu | Semua counter kembali ke 0 dan `EN=1`. |
 
 ## 2. Sinyal Internal
 
