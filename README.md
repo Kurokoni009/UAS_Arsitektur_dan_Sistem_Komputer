@@ -1,207 +1,91 @@
-# 🕐 8-bit Digital Stopwatch (HH:MM:SS)
+# Digital Logic Design: Stopwatch Digital HH:MM:SS di Logisim Evolution
 
-> **Ujian Akhir Semester — Arsitektur dan Sistem Komputer**  
-> Prodi S1 Kecerdasan Artifisial, FMIPA — Universitas Negeri Surabaya  
-> Tahun Akademik 2025/2026
+> Proyek Ujian Akhir Semester Genap 2025/2026  
+> Mata kuliah: Arsitektur dan Sistem Komputer  
+> Program studi: S1 Kecerdasan Artifisial, FMIPA Universitas Negeri Surabaya
 
----
+## Penyusun Proyek
 
-## 👥 Penyusun Proyek
+| Nama | NIM | Peran |
+|---|---|---|
+| [Nama Anggota 1] | [NIM 1] | Perancang counter dan carry chain |
+| [Nama Anggota 2] | [NIM 2] | Perancang kontrol START/STOP/RESET |
+| [Nama Anggota 3] | [NIM 3] | Dokumentasi, pengujian, dan video demo |
 
-| Nama | NIM |
-|------|-----|
-| Narendra Farel Arivanto | 25032014021 |
-| Nadhif Dafa Aditra | 25032014029 |
-| Fahmi Bima Yudhistira | 25032014011 |
+## Deskripsi Singkat Proyek
 
----
+Proyek ini memilih topik **Digital Logic Design** dengan bentuk **embedded system dalam simulator**. Sistem yang dibuat adalah stopwatch digital `HH:MM:SS` berbasis Logisim Evolution. Rancangan memakai enam counter BCD, yaitu `SEC_ONES`, `SEC_TENS`, `MIN_ONES`, `MIN_TENS`, `HR_ONES`, dan `HR_TENS`. Setiap digit mengeluarkan nilai `Q[3:0]` ke display 7-segment mode BCD.
 
-## 📋 Deskripsi Proyek
+Kontrol utama berada di top-level. Tombol `START` mengaktifkan flip-flop enable (`EN_FF`), tombol `STOP` menonaktifkan `EN_FF`, dan tombol `RESET` mengirim sinyal `CLR` global ke seluruh counter serta mengembalikan sistem ke `00:00:00`. Rantai `CARRY` dipakai agar digit berikutnya bertambah hanya ketika digit sebelumnya mencapai nilai terminal.
 
-Proyek ini mengimplementasikan **Stopwatch Digital 8-bit** menggunakan simulator **Logisim Evolution**. Stopwatch dirancang sepenuhnya dengan komponen digital logic dasar seperti flip-flop, gerbang logika, counter BCD, dan decoder 7-segment — tanpa menggunakan modul counter bawaan Logisim.
+## Fitur Utama
 
-### Fitur Utama
+| Fitur | Penjelasan |
+|---|---|
+| Display `HH:MM:SS` | Enam digit BCD ditampilkan melalui enam 7-segment display. |
+| START | Mengubah `EN_FF` menjadi aktif sehingga stopwatch mulai menghitung. |
+| STOP | Menahan nilai terakhir dengan membuat `EN=0`. |
+| RESET | Menghapus seluruh counter melalui `CLR` dan menghentikan stopwatch. |
+| Carry chain | Mengatur transisi `00:00:59 → 00:01:00` dan `00:59:59 → 01:00:00`. |
+| Modular counter | Menggunakan sub-circuit `BCD_0to9` dan `BCD_0to5`. |
 
-- ⏱️ **Display HH:MM:SS** — Menampilkan jam, menit, dan detik secara bersamaan via 6 digit 7-segment display
-- ▶️ **Start/Stop** — Toggle counting dengan satu tombol; stopwatch berhenti di waktu terakhir
-- 🏗️ **Full Custom Logic** — Semua komponen dibangun dari gate dasar: AND, OR, NOT, XOR, dan D Flip-Flop
-- 📊 **Modular Design** — Setiap sub-circuit (BCD Counter, 7-Seg Decoder, Control Unit, Clock Divider) dibuat sebagai modul terpisah yang dapat diuji secara independen
+## Struktur Repository
 
-### Komponen Digital yang Digunakan
-
-| Komponen | Fungsi |
-|----------|--------|
-| D Flip-Flop × 24 | Menyimpan state setiap bit counter (4-bit × 6 counter) |
-| AND Gate | Carry logic, enable gating |
-| OR Gate | Kombinasi kondisi reset dan carry |
-| NOT Gate | Inversi sinyal kontrol |
-| XOR Gate | Adder partial sum |
-| 7-Segment Decoder × 6 | Konversi BCD ke tampilan segmen |
-| SR Latch | Control unit Start/Stop |
-
----
-
-## 🏛️ Arsitektur Sistem
-
-```
-                    ┌─────────────┐
-     CLK ──────────▶│ Clock Divider│──── 1Hz ──────────────────────────┐
-                    └─────────────┘                                     │
-                                                                        │
-  START ──┐    ┌──────────────────┐                                     │
-          ├───▶│   Control Unit   │──── EN (counting_enable) ──────────┐│
-  STOP  ──┘    │   (SR Latch)     │──── CLR (async reset)  ────────────┤│
-               └──────────────────┘                                    ││
-                                                                       ││
-               ┌──────────────────────────────────────────────────┐   ││
-               │                BCD Counter Chain                  │◀──┘│
-               │                                                   │    │
-               │  ┌─────────┐ carry ┌─────────┐ carry ┌─────────┐│    │
-               │  │SEC_ONES │──────▶│SEC_TENS │──────▶│MIN_ONES ││◀───┘
-               │  │  (0–9)  │       │  (0–5)  │       │  (0–9)  ││
-               │  └────┬────┘       └────┬────┘       └────┬────┘│
-               │       │                 │                  │     │
-               │  ┌────▼────┐       ┌────▼────┐       ┌────▼────┐│
-               │  │7-SEG DEC│       │7-SEG DEC│       │7-SEG DEC││
-               │  └────┬────┘       └────┬────┘       └────┬────┘│
-               │      SS               SS                  MM    │
-               │                                                   │
-               │  ┌─────────┐ carry ┌─────────┐ carry ┌─────────┐│
-               │  │MIN_TENS │──────▶│ HR_ONES │──────▶│ HR_TENS ││
-               │  │  (0–5)  │       │  (0–9)  │       │  (0–9)  ││
-               │  └────┬────┘       └────┬────┘       └────┬────┘│
-               │       │                 │                  │     │
-               │  ┌────▼────┐       ┌────▼────┐       ┌────▼────┐│
-               │  │7-SEG DEC│       │7-SEG DEC│       │7-SEG DEC││
-               │  └────┬────┘       └────┬────┘       └────┬────┘│
-               │      MM               HH                  HH    │
-               └──────────────────────────────────────────────────┘
-
-                        ┌─────────────────────────────┐
-                        │    DISPLAY: HH : MM : SS     │
-                        │   [  ] [  ] : [  ] [  ] : [  ] [  ]  │
-                        └─────────────────────────────┘
-```
-
-### State Machine (Control Unit)
-
-```
-         RESET
-           │
-           ▼
-  ┌─────────────────┐   START pressed   ┌─────────────────┐
-  │      IDLE       │──────────────────▶│    RUNNING      │
-  │  (EN = 0)       │                   │   (EN = 1)      │
-  │  Counter holds  │◀──────────────────│  Counter counts │
-  └─────────────────┘   START pressed   └─────────────────┘
-           ▲                                     │
-           └─────────────── RESET ───────────────┘
-```
-
----
-
-## 🚀 Cara Menjalankan / Simulasi
-
-### Prerequisites
-
-- **Logisim Evolution** versi 3.8.0 atau lebih baru
-- Java Runtime Environment (JRE) 11+
-
-### Download Logisim Evolution
-
-```bash
-# Download dari GitHub releases resmi
-https://github.com/logisim-evolution/logisim-evolution/releases/latest
-```
-
-Atau download file `.jar` langsung dan jalankan:
-```bash
-java -jar logisim-evolution.jar
-```
-
-### Langkah Simulasi
-
-1. **Buka file circuit**
-   ```
-   File → Open → pilih file: src/stopwatch.circ
-   ```
-
-2. **Verifikasi tampilan**
-   - Pastikan 6 display 7-segment terlihat dan menunjukkan `00:00:00`
-   - Pastikan ada 2 tombol: **START** dan **STOP**
-
-3. **Set kecepatan clock**
-   - Klik kanan komponen Clock → pilih **Edit Properties**
-   - Set **High Duration** dan **Low Duration** ke `500ms` (= 1Hz clock)
-   
-   > Atau untuk demo yang lebih cepat, set ke `50ms` (10Hz) — stopwatch akan berjalan 10× lebih cepat
-
-4. **Jalankan simulasi**
-   ```
-   Simulate → Run Simulation  (atau tekan Ctrl+E)
-   ```
-
-5. **Operasikan stopwatch**
-   | Aksi | Cara |
-   |------|------|
-   | Mulai hitung | Klik tombol **START** |
-   | Pause / berhenti | Klik tombol **START** lagi |
-   | Reset ke 00:00:00 | Klik tombol **RESET** |
-
-6. **Verifikasi carry chain**
-   - Untuk test cepat: set clock ke 512Hz dan amati detik berganti setiap 0.5 detik simulasi
-   - Pastikan `SS: 59 → 00` dan `MM` bertambah 1 dengan benar
-   - Pastikan `MM: 59 → 00` dan `HH` bertambah 1 dengan benar
-
----
-
-## 📁 Struktur Repository
-
-```
-stopwatch-digital/
-│
+```text
+stopwatch-digital-logisim/
+├── README.md
 ├── src/
-│   └── stopwatch.circ          # File circuit utama Logisim Evolution
-│
+│   ├── stopwatch.circ                 # file utama Logisim, wajib ditambahkan
+│   └── README_src.md                   # catatan isi folder src
 ├── docs/
-│   ├── laporan.md              # Laporan singkat proyek
-│   ├── architecture.md         # Penjelasan arsitektur detail
-│   ├── flowchart.png           # Flowchart sistem
-│   ├── diagram_blok.png        # Block diagram
-│   └── reconstruction.md       # Panduan rebuild circuit dari nol
-│
-├── test/
-│   ├── test_results.md         # Hasil pengujian lengkap
-│   ├── test_cases.md           # Daftar test case
-│   └── screenshots/            # Screenshot simulasi berjalan
-│       ├── init_state.png
-│       ├── running_state.png
-│       ├── pause_state.png
-│       ├── reset_state.png
-│       └── carry_transition.png
-│
-└── README.md
+│   ├── laporan_singkat.md
+│   ├── architecture.md
+│   ├── input_output_system.md
+│   ├── checklist_syarat_uas.md
+│   ├── video_script_10_15_menit.md
+│   ├── diagram_blok.png
+│   ├── flowchart.png
+│   └── screenshots/
+│       └── struktur_logisim_akhir.png
+└── test/
+    ├── test_results.md
+    └── test_cases.md
 ```
 
----
+## Cara Menjalankan Simulasi
 
-## 🎬 Video Demo
+1. Unduh dan buka **Logisim Evolution** versi 3.8.0 atau versi yang kompatibel.
+2. Buka file `src/stopwatch.circ` melalui menu `File → Open`.
+3. Pastikan top-level circuit menampilkan tombol `START`, `STOP`, `RESET`, input `CLK_1Hz`, enam counter BCD, dan enam display.
+4. Aktifkan simulasi melalui `Simulate → Simulation Enabled`.
+5. Aktifkan clock melalui `Simulate → Ticks Enabled`.
+6. Tekan `START` untuk menjalankan stopwatch.
+7. Tekan `STOP` untuk menghentikan hitungan pada nilai terakhir.
+8. Tekan `START` kembali untuk melanjutkan hitungan.
+9. Tekan `RESET` untuk mengembalikan tampilan ke `00:00:00` dan membuat `EN=0`.
 
-> 📹 **[Link Video YouTube — klik di sini](_LINK_YOUTUBE_)**
+## Output yang Diharapkan
 
-**Isi video:**
-- Perkenalan singkat anggota tim dan topik proyek
-- Penjelasan arsitektur: clock divider, BCD counter chain, 7-segment decoder, control unit
-- Demo live simulasi di Logisim Evolution (start, stop, reset, carry chain)
-- Penjelasan cara kerja masing-masing sub-circuit
-- Output terukur: timing counter, verifikasi carry pada 00:59:59 → 01:00:00
-- Kesimpulan dan kendala yang ditemui
+| Kondisi | Output yang Seharusnya Muncul |
+|---|---|
+| Power on | `00:00:00`, stopwatch diam. |
+| START ditekan | Counter bertambah setiap pulsa `CLK_1Hz`. |
+| STOP ditekan | Nilai display berhenti pada waktu terakhir. |
+| START setelah STOP | Counter lanjut dari nilai terakhir. |
+| RESET ditekan | Semua digit kembali ke `00:00:00`, `EN=0`. |
+| `00:00:59 + 1 detik` | Display berubah menjadi `00:01:00`. |
+| `00:59:59 + 1 detik` | Display berubah menjadi `01:00:00`. |
 
----
+## Link Video Demo
 
-## 📚 Referensi
+Link YouTube: `[masukkan link video unlisted/public di sini]`
 
-- Mano, M. M., & Ciletti, M. D. (2013). *Digital Design* (5th ed.). Pearson.
-- Logisim Evolution Documentation: https://github.com/logisim-evolution/logisim-evolution
-- Floyd, T. L. (2014). *Digital Fundamentals* (11th ed.). Pearson.
+Video demo disiapkan berdurasi **10 sampai 15 menit** dan memuat: perkenalan anggota, topik dan tujuan proyek, demo sistem live, penjelasan cara kerja rangkaian, output terukur dari pengujian, kesimpulan, dan kendala.
 
+## Link GitHub
+
+Link repository GitHub public: `[masukkan link repository GitHub di sini]`
+
+## Catatan Kejujuran Teknis
+
+Proyek ini lebih tepat disebut **embedded system digital berbasis counter BCD**, bukan komputer 8-bit lengkap. Sistem tidak memiliki ALU umum, register file, memori program, atau instruction set seperti komputer 8-bit. Namun, sistem tetap memenuhi jalur Digital Logic Design karena dibangun dari logika sekuensial, flip-flop, counter, sinyal kontrol, bus `Q[3:0]`, dan I/O digital di Logisim.
