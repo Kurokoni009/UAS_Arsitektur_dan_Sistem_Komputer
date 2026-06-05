@@ -32,21 +32,21 @@ Kontrol utama berada di top-level. Tombol `START` mengaktifkan flip-flop enable 
 ## Struktur Repository
 
 ```text
-stopwatch-digital-logisim/
+stopwatch_uas/
 ├── README.md
 ├── src/
 │   ├── stopwatch.circ                 # file utama Logisim, wajib ditambahkan
 │   └── README_src.md                   # catatan isi folder src
 ├── docs/
-│   ├── laporan_singkat.md
-│   ├── architecture.md
-│   ├── input_output_system.md
-│   ├── checklist_syarat_uas.md
-│   ├── video_script_10_15_menit.md
+│   ├── laporan Project.docx
+│   ├── architecture.txt
+│   ├── input_output_system.txt
 │   ├── diagram_blok.png
 │   ├── flowchart.png
 │   └── screenshots/
-│       └── struktur_logisim_akhir.png
+│       └── main_circuit.png
+│       ├── BCD_0to5_circuit.png
+│       └── BCD_0to9_circuit.png
 └── test/
     ├── test_results.md
     └── test_cases.md
