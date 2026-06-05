@@ -51,10 +51,10 @@ Kolom `Status` harus diisi setelah simulasi dijalankan. Jangan menulis `PASS` ji
 
 | Kelompok Uji | Total Test | PASS | FAIL | Catatan |
 |---|---:|---:|----|
-| Kontrol START/STOP/RESET | 3 |  ✅ |    | Validasi `EN_FF` dan `CLR`. |
-| Counter BCD | 21 |  ✅  |    | Validasi `BCD_0to9` dan `BCD_0to5`. |
-| Sistem terintegrasi | 12 | ✅ |    | Validasi display dan carry chain. |
-| **Total** | **36** | SUCCESS |      | **[isi setelah simulasi]** |
+| Kontrol START/STOP/RESET | 3 |  ✅ |  0  | Validasi `EN_FF` dan `CLR`. |
+| Counter BCD | 21 |  ✅  |  0  | Validasi `BCD_0to9` dan `BCD_0to5`. |
+| Sistem terintegrasi | 12 | ✅ |  0  | Validasi display dan carry chain. |
+| **Total** | **36** | SUCCESS |  0  | **Dengan akumulasi 36 kali percobaan program kami sukses** |
 
 ## 6. Analisis Pengujian
 
