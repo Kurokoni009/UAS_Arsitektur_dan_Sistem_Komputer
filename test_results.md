@@ -28,7 +28,7 @@ Kolom `Status` harus diisi setelah simulasi dijalankan. Jangan menulis `PASS` ji
 | Test ID | Modul | Input Kondisi | Expected Q[3:0] | Expected Carry Status |
 |---|---|---|---|---|
 | BCD9-01 | `BCD_0to9` | `CLR=1` | `0000` | 0 | PASS |
-| BCD9-02 | `BCD_0to9` | 1 counter clock, `EN=1` | `0001` | 0 | [isi] | PASS |
+| BCD9-02 | `BCD_0to9` | 1 counter clock, `EN=1` | `0001` | 0 | PASS |
 | BCD9-03 | `BCD_0to9` | Nilai mencapai 9 | `1001` | 1 | PASS |
 | BCD9-04 | `BCD_0to9` | Counter setelah 9 | `0000` | 0 setelah wrap | PASS |
 | BCD5-01 | `BCD_0to5` | `CLR=1` | `0000` | 0 | PASS |
