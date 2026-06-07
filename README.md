@@ -78,13 +78,13 @@ stopwatch_uas/
 
 ## Link Video Demo
 
-Link YouTube: `[masukkan link video unlisted/public di sini]`
+Link YouTube: `https://youtu.be/Iv264pw0W20`
 
 Video demo disiapkan berdurasi **10 sampai 15 menit** dan memuat: perkenalan anggota, topik dan tujuan proyek, demo sistem live, penjelasan cara kerja rangkaian, output terukur dari pengujian, kesimpulan, dan kendala.
 
 ## Link GitHub
 
-Link repository GitHub public: `[masukkan link repository GitHub di sini]`
+Link repository GitHub public: `https://github.com/Kurokoni009/UAS_Arsitektur_dan_Sistem_Komputer`
 
 ## Catatan Kejujuran Teknis
 
